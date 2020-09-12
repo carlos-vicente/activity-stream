@@ -21,6 +21,9 @@ build_script:
 
 test: off
 
+#before_deploy:
+#  - ps: >-
+#    
 #deploy_script:
 #- ps: >-
 #    "$env:DOCKER_PASS" | docker login --username "$env:DOCKER_USER" --password-stdin

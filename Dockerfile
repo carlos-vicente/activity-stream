@@ -9,8 +9,10 @@ RUN dotnet publish ./Activity.Stream.Api/Activity.Stream.Api.csproj --output /ap
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1.8-alpine3.12
 
-WORKDIR /app
-COPY --from=builder /app .
+COPY --from=builder /app /app
+COPY  ./docker-entrypoint.sh /docker-entrypoint.sh
 
-ENTRYPOINT ["dotnet"]
-CMD ["/app/Activity.Stream.Api.dll"]
+ENV PORT=5000
+
+ENTRYPOINT ["/bin/sh"]
+CMD ["/docker-entrypoint.sh"]
